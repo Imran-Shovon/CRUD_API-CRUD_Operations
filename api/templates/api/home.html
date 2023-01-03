@@ -1,0 +1,44 @@
+{% extends 'base.html'%} {%block title %}Home Page {%endblock%} {%block body %}
+{% include 'messages.html' %}
+<div>
+  <a href="{% url 'department-student' %}" class="btn btn-info"
+    >Student's Department</a
+  ><br />
+  <a href="{% url 'department' %}" class="btn btn-info">See All Department</a>
+  <br />
+  <a href="{% url 'add-student' %}" class="btn btn-info">Add Student</a>
+  <br />
+  <a href="{% url 'logout' %}" class="btn btn-info">Logout</a>
+</div>
+<table border="2">
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Roll</th>
+    <th>City</th>
+    <th>Action</th>
+  </thead>
+
+  <tbody>
+    <tr>
+      {%for data in stu%}
+      <td>{{ data.id}}</td>
+      <td>{{ data.name}}</td>
+      <td>{{ data.roll}}</td>
+      <td>{{ data.city}}</td>
+      <td>
+        <form action="{% url 'update' data.id %}" method="post" class="d-line">
+          {%csrf_token%}
+          <input type="submit" value="Update" />
+        </form>
+        <form action="{% url 'delete' data.id %}" method="post" class="d-line">
+          {%csrf_token%}
+          <input type="submit" value="Delete" />
+        </form>
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+{%endblock %}

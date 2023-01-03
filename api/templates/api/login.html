@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% block title %} Login {% endblock %} {% block body %}
+{%load crispy_forms_tags %}
+<h1>Login</h1>
+{% include 'messages.html' %}
+<br />
+<form method="POST">
+  {% csrf_token %}
+  {{ login_form|crispy }}
+</br>
+  <button class="btn btn-primary" type="submit">Login</button>
+</form>
+<p class="text-center">Don't have an account? <a href="register">Create an account</a>.</p>
+</div>
+
+
+{%endblock%} {% comment %}
+<form action="{% url 'login' %}" method="POST">
+  {%csrf_token%}
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="username" /><br /><br />
+  <label for="roll">Password:</label>
+  <input type="password" id="password" name="password" /><br /><br />
+  <input type="submit" value="Login" />
+</form>
+<a href="{% url 'signup' %}" class="btn btn-info">Register</a>
+{% endcomment %}

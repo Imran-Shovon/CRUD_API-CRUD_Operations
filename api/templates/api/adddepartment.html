@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block title %} Add Department {% endblock %}
+{%block body %} {% include 'messages.html' %}
+<h2>Add New Department</h2>
+
+<form action="" method="POST">
+  {% csrf_token %} {{form.as_p}}
+
+  <input type="submit" value="Add Department" />
+
+  <a href="{% url 'department' %}" class="btn btn-info">Back to Home</a>
+</form>
+{% endblock %}

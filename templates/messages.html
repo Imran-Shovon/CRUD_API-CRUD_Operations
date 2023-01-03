@@ -1,0 +1,5 @@
+{%include 'base.html'%}{%block body%}{%if messages%}{%for message in messages %}
+<div class="alert alert-dismissible alert-success">
+  <strong>{{message}}</strong>
+</div>
+{% endfor %} {% endif %} {% endblock %}

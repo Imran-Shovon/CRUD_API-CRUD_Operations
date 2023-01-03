@@ -1,0 +1,19 @@
+{%extends 'base.html'%} {%block title%}Update Students department {%endblock%}
+{% block body %} {%include 'messages.html' %}
+<h1>Update Students Department Information</h1>
+
+<form action="" method="post">
+  {% csrf_token %} 
+  <label for="name">Student ID:</label>
+  <input type="text" id="student" name="student" /><br /><br />
+  <label for="name">Department ID:</label>
+  <input type="text" id="dept" name="dept" /><br /><br />
+
+  <input type="submit" value="Update Student's Department" />
+
+  <a href="{% url 'department-student' %}" class="btn btn-info"
+    >Back to Student's Department</a
+  >
+
+</form>
+{%endblock%}

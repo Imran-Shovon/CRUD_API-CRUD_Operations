@@ -1,0 +1,51 @@
+{%extends "base.html" %}{%block title%}Departments and Student
+Page{%endblock%}{%block body %}{% include 'messages.html' %}
+<h2>Welcome to the Student's Department</h2>
+<div>
+  <a href="{% url 'add-student-department' %}" class="btn btn-info"
+    >Add Student's Department</a
+  >
+  <br />
+  <a href="{% url 'home-page' %}" class="btn btn-info">Go to Student List</a>
+  <br />
+  <a href="{% url 'department' %}" class="btn btn-info">Department</a>
+  <br />
+  <a href="{% url 'logout' %}" class="btn btn-info">Logout</a>
+</div>
+<table border="2">
+  <thead>
+    <th>ID</th>
+    <th>Student Name</th>
+    <th>Dept Name</th>
+    <th>Action</th>
+  </thead>
+
+  <tbody>
+    <tr>
+      {%for data in dept%}
+      <td>{{ data.id}}</td>
+      <td>{{ data.student}}</td>
+      <td>{{ data.dept}}</td>
+      <td>
+        <form
+          action="{% url 'update-student-department' data.id %}"
+          method="post"
+          class="d-line"
+        >
+          {%csrf_token%}
+          <input type="submit" value="Update" />
+        </form>
+        <form
+          action="{% url 'delete_student_department' data.id %}"
+          method="post"
+          class="d-line"
+        >
+          {%csrf_token%}
+          <input type="submit" value="Delete" />
+        </form>
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{% endblock %}
